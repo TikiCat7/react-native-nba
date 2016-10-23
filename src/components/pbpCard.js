@@ -3,38 +3,61 @@ import { CardItem } from 'native-base';
 import { Text, View, Image } from 'react-native';
 
 const PbpCard = ({ play, thumbnailUri }) => {
-  const { description } = play;
+  const { description, clock, vTeamScore, hTeamScore } = play;
   return (
       <CardItem style={styles.CardItem}>
-        <View>
+        <View style={styles.ThumbnailViewStyle}>
           <Image
-            style={styles.thumbnailStyle}
+            style={styles.ThumbnailStyle}
             source={{ uri: thumbnailUri }}
           />
         </View>
-        <View>
-          <Text style={styles.CardText}>
-            {description}
+
+        <Text style={styles.CardText}>
+          {description}
+        </Text>
+
+        <View style={styles.ScoreAndTimeStyle}>
+          <Text>
+            {hTeamScore}-{vTeamScore}
+          </Text>
+          <Text style={styles.CardClock}>
+            {clock}
           </Text>
         </View>
+
       </CardItem>
   );
 };
 
 const styles = {
   CardItem: {
-    flex: 1,
-    justifyContent: 'flex-start',
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   CardText: {
-    fontSize: 8
+    fontSize: 12,
+    flexWrap: 'wrap',
+    flex: 1
   },
-  thumbnailStyle: {
+  CardClock: {
+    fontWeight: '300'
+  },
+  ThumbnailStyle: {
     width: 50,
-    height: 50
+    height: 50,
+  },
+  ThumbnailViewStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
+    marginRight: 10
+  },
+  ScoreAndTimeStyle: {
+    alignItems: 'center',
+    marginLeft: 5
   }
-
 };
 
 export default PbpCard

@@ -47,9 +47,9 @@ class Pbp extends React.Component {
     );
 
     return (
-      <View>
-        <Text style={styles.titleStyle}>Play by Play for TOR vs WAS</Text>
-        <Card>
+      <View style={styles.PbpViewStyle} >
+        <Text style={styles.titleStyle}>Play By Play Data for TOR vs WAS 4Q (2016/10/21) </Text>
+        <Card style={styles.CardStyle}>
           { playData }
         </Card>
       </View>
@@ -59,7 +59,18 @@ class Pbp extends React.Component {
 
 const styles = {
   titleStyle: {
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontSize: 20,
+    fontWeight: '500',
+    marginBottom: 20,
+    marginTop: 20,
+    textAlign: 'center'
+  },
+  CardStyle: {
+    width: 320
+  },
+  PbpViewStyle: {
+    alignItems: 'center'
   }
 };
 
