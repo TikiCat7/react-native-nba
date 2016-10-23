@@ -1,6 +1,9 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import { Card } from 'native-base';
 import Axios from 'axios';
+
+import PbpCard from './pbpCard';
 
 class Pbp extends React.Component {
   constructor(props) {
@@ -22,32 +25,42 @@ class Pbp extends React.Component {
     console.log(this.state.plays);
   }
 
-  preparePlaysData() {
-    const preped = this.state.plays.map(play => {
-      console.log(play.description);
-      return (
-        <Text key={play.clock + play.description}>
-          {play.desription}
-        </Text>
-      );
-    });
-    console.log(preped);
-    return preped;
-  }
-
   render() {
-    const playData = this.state.plays.map(play =>
-      <Text key={play.clock + play.description}>
-        {play.description}
-      </Text>);
+    const playData = this.state.plays.map(play => {
+      const teamId = play.teamId;
+      let uri = '';
+      if (teamId === '1610612764') {
+        uri = 'https://lh3.googleusercontent.com/Se_JaoTyEUh4xvVu9CYfgfmjb573H6u2OrhVlJZCwi2E8R612M0K3iRIVfM4-6YoQb4THqkkGtWJV9DN2Mgpc8YRjevuHthvUUyejPYGT45Je6RTnj7Tn8a5h3qp_JTvfB9sj98';
+      } else if (teamId === '1610612761') {
+        uri = 'https://www.ticketsmofo.com/uploads/media/54d0d5e40628b.png?v2';
+      } else {
+        uri = 'https://diylogodesigns.com/blog/wp-content/uploads/2016/06/nba-logo-transparent-png-logo-download.png';
+      }
+        return (
+          <PbpCard
+            play={play}
+            key={play.clock + play.description}
+            thumbnailUri={uri}
+          />
+        );
+      }
+    );
 
     return (
       <View>
-        <Text>Play by Play</Text>
-        {playData}
+        <Text style={styles.titleStyle}>Play by Play for TOR vs WAS</Text>
+        <Card>
+          { playData }
+        </Card>
       </View>
     );
   }
 }
+
+const styles = {
+  titleStyle: {
+    justifyContent: 'center'
+  }
+};
 
 export default Pbp;
