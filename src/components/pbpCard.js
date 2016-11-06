@@ -60,4 +60,4 @@ const styles = {
   }
 };
 
-export default PbpCard
+export default PbpCard;

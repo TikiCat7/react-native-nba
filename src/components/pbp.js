@@ -21,7 +21,7 @@ class Pbp extends React.Component {
   }
 
   componentDidMount() {
-    console.log('component mounteds');
+    console.log('component mounted');
     console.log(this.state.plays);
   }
 
